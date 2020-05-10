@@ -6,10 +6,6 @@
 #include <string>
 #include <sstream>
 
-
-//#include <openssl/sha.h>
-//#include <openssl/md5.h>
-//#include <Wincrypt.h>
 using namespace std;
 
 string encodingStrings(int key, string name);
@@ -103,7 +99,7 @@ int main()
 
 void writeDefaults(double enc_Arr[]) {//, double levelComplete[], double XP, int doubloons, string characterName, string villainName, char combatRating, char npcStanding, int numOfLives, double distanceTraveled, int enemiesSlain) {
 	ofstream defaults;
-	defaults.open("defaults.txt");
+	defaults.open("Defaults.txt"); 
 
 	for (int i = 0; i < 10; i++)
 	{
@@ -132,7 +128,7 @@ void writeDefaults(double enc_Arr[]) {//, double levelComplete[], double XP, int
 }
 
 string readDefaults() {
-	ifstream defaults("defaults.txt");
+	ifstream defaults("Defaults.txt");
 	string in;
 	string input = "";
 	if (defaults.is_open()) {
@@ -145,6 +141,7 @@ string readDefaults() {
 		cout << "Unable to open file" << endl;
 	}
 	//defaults.close();
+	cout << "input:" << input << endl;
 	return input;
 }
 
