@@ -44,22 +44,10 @@ int main()
 	double distanceTraveled = 356.98;
 	int enemiesSlain = 1500;
 
-	cout << "Would you like to store the default values in a file?" << endl << "w to write to defaults.txt" << endl;
-	string write;
-	cin >> write;
-
-	if (write == "W" || write == "w") {
-		encodingDoubleArray(5672, levelComplete, enc_Arr);
-		encoder(XP, doubloons, characterName, villainName, combatRating, npcStanding, numOfLives, distanceTraveled, enemiesSlain, enc_Arr);
-		writeDefaults(enc_Arr);
-		cout << "You can now close the program and try editing defaults.txt" << endl;
-	}
-
-	cout << "Levels Completeness: " << endl;
 	encodingDoubleArray(5672, levelComplete, enc_Arr);
 	encoder(XP, doubloons, characterName, villainName, combatRating, npcStanding, numOfLives, distanceTraveled, enemiesSlain, enc_Arr);
 
-	cout << "Would you like to change some values in the program?" << endl << "y to change values" << endl;
+	cout << "Would you like to change some values in the program?" << endl << "y to change values and any other key to not change values" << endl;
 	string input;
 	cin >> input;
 
@@ -80,24 +68,21 @@ int main()
 			cout << "Default Doubloons: " << doubloons << endl;
 			cout << "Default Combat Rating: " << combatRating << endl;
 		}
-		writeDefaults(enc_Arr);
-		cout << "masterString: " << masterString << endl;
-
 	}
 	string checker;
 	checker = readDefaults();
 	if (checker == masterString) {
-		cout << "The file has not been altered! " << endl;
+		cout << "Defaults.txt has not been altered! " << endl;
 	}
 	else {
-		cout << "The file has been altered! defaults.txt will now be overwritten:  " << endl;
+		cout << "The file has been altered! Defaults.txt will now be overwritten:  " << endl;
 		writeDefaults(enc_Arr);
 	}
-	cout << "checker: " << checker << endl;
+	cout << "\n\nPlease note that to test further functionality of this code you will need to change the values in Defaults.txt and run the program again." << endl << endl;
 
 }
 
-void writeDefaults(double enc_Arr[]) {//, double levelComplete[], double XP, int doubloons, string characterName, string villainName, char combatRating, char npcStanding, int numOfLives, double distanceTraveled, int enemiesSlain) {
+void writeDefaults(double enc_Arr[]) {
 	ofstream defaults;
 	defaults.open("Defaults.txt"); 
 
@@ -140,11 +125,8 @@ string readDefaults() {
 	else {
 		cout << "Unable to open file" << endl;
 	}
-	//defaults.close();
-	cout << "input:" << input << endl;
 	return input;
 }
-
 
 
 bool valueChecker(double newDouble, int newInt, char newChar) {
@@ -210,16 +192,7 @@ void encoder(double XP, int doubloons, string characterName, string villainName,
 	ss << enc_slain;
 
 	masterString = ss.str();
-	//Printing for testing purposes:
-	cout << "\nXP: " << enc_XP << endl;
-	cout << "doubloons: " << enc_doubloons << endl;
-	cout << "Character Name: " << enc_charName << endl;
-	cout << "Villian: " << enc_Villain << endl;
-	cout << "Combat Rating; " << enc_combatRating << endl;
-	cout << "npcStanding: " << enc_npcStanding << endl;
-	cout << "Number of Lives: " << enc_numOfLives << endl;
-	cout << "Distance Traveled: " << enc_distance << endl;
-	cout << "Enemies Slain: " << enc_slain << endl;
+	
 }
 
 double encodingDoubles(int key, double var)
@@ -237,8 +210,6 @@ void encodingDoubleArray(int key, double doublearray[], double newArray[])
 	{
 		castedArrayVal = encodingDoubles(key, doublearray[i]);
 		newArray[i] = castedArrayVal;
-		//Printing for testing
-		cout << newArray[i] << " ";
 	}
 	return;
 }
@@ -283,4 +254,3 @@ char encodingChars(int key, char character)
 	return newChar;
 }
 
-//https://www.technical-recipes.com/2014/using-openssl-sha-256-in-visual-c/
