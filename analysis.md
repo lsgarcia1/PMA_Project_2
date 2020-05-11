@@ -1,7 +1,11 @@
 analysis.md
+
 Authors: Hannah Tippin, Leonardo Garcia, Brandon Steege
+
 COSC 4010
+
 May 12, 2020
+
 
 Initially, we began our analysis by attempting to find the local variable that we knew to be in the main function of our C++ program. Our main tool that was used for this analysis was IDA Pro 7.0 as that was the only version that would run on our Windows 10 machines. 
 
